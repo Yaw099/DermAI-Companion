@@ -1,0 +1,340 @@
+/* ---- Global layout ---- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body.app-body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background-color: #0f172a; /* dark slate */
+    color: #e5e7eb;           /* gray-200 */
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    border-bottom: 1px solid #1f2937;
+    background: radial-gradient(circle at top left, #1f2937 0, #020617 60%);
+}
+
+.app-header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: #22c55e; /* green-500 */
+}
+
+.app-title {
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: #f9fafb;
+}
+
+.app-header-right .user-chip {
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    background: #111827;
+    border: 1px solid #374151;
+    font-size: 0.8rem;
+    color: #e5e7eb;
+}
+
+.app-main {
+    min-height: calc(100vh - 56px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+/* ---- Auth pages (login + 2FA) ---- */
+
+.auth-page {
+    width: 100%;
+    max-width: 420px;
+}
+
+.auth-card {
+    background: #020617;
+    border-radius: 16px;
+    padding: 1.75rem 1.75rem 1.5rem;
+    border: 1px solid #1e293b;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+}
+
+.auth-title {
+    margin: 0 0 0.25rem;
+    font-size: 1.4rem;
+    color: #f9fafb;
+}
+
+.auth-subtitle {
+    margin: 0 0 1.5rem;
+    font-size: 0.9rem;
+    color: #9ca3af;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    color: #d1d5db;
+}
+
+.form-group input {
+    border-radius: 10px;
+    border: 1px solid #374151;
+    background: #030712;
+    padding: 0.6rem 0.7rem;
+    color: #e5e7eb;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: #22c55e;
+    box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.4);
+}
+
+.field-helper {
+    font-size: 0.78rem;
+    color: #6b7280;
+    margin-top: 0.2rem;
+}
+
+.form-group input[type="file"] {
+    font-size: 0.85rem;
+    color: #e5e7eb;
+}
+
+
+.btn {
+    border: none;
+    cursor: pointer;
+    border-radius: 999px;
+    padding: 0.6rem 1.1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.btn-primary {
+    background: linear-gradient(to right, #22c55e, #16a34a);
+    color: #022c22;
+}
+
+.btn-primary:hover {
+    filter: brightness(1.05);
+}
+
+.form-error {
+    margin-top: 0.75rem;
+    color: #f97373;
+    font-size: 0.86rem;
+}
+
+.auth-footnote {
+    margin-top: 1rem;
+    font-size: 0.78rem;
+    color: #6b7280;
+}
+
+/* ---- Header extras ---- */
+
+.logo-icon {
+    font-size: 1.1rem;
+    margin-left: 0.25rem;
+    margin-right: 0.35rem;
+}
+
+.logout-link {
+    margin-left: 0.5rem;
+    padding: 0.3rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid #4b5563;
+    color: #e5e7eb;
+    font-size: 0.8rem;
+    text-decoration: none;
+    background: #020617;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease,
+                transform 0.05s ease;
+}
+
+.logout-link:hover {
+    background: #ef4444;
+    border-color: #f97373;
+    color: #f9fafb;
+    transform: translateY(-0.5px);
+}
+
+/* Optional: subtle hover for app header title */
+.app-title:hover {
+    color: #a5b4fc;
+}
+
+/* ---- Home layout ---- */
+
+.home-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1100px;
+}
+
+.home-panel,
+.chat-panel {
+    background: #020617;
+    border-radius: 16px;
+    border: 1px solid #111827;
+    padding: 1.4rem 1.5rem;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+.home-title {
+    margin: 0 0 0.4rem;
+    font-size: 1.3rem;
+    color: #f9fafb;
+}
+
+.home-subtitle {
+    margin: 0 0 1.2rem;
+    font-size: 0.9rem;
+    color: #9ca3af;
+}
+
+.home-form textarea {
+    border-radius: 10px;
+    border: 1px solid #374151;
+    background: #030712;
+    padding: 0.75rem;
+    color: #e5e7eb;
+    font-size: 0.9rem;
+    resize: vertical;
+    min-height: 120px;
+}
+
+.home-form textarea:focus {
+    border-color: #22c55e;
+    box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.3);
+    outline: none;
+}
+
+.home-footnote {
+    margin-top: 0.85rem;
+    font-size: 0.78rem;
+    color: #6b7280;
+}
+
+/* ---- Chat window ---- */
+
+.chat-window {
+    background: #020617;
+    border-radius: 12px;
+    border: 1px solid #111827;
+    padding: 0.9rem 0.8rem;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.chat-message {
+    margin-bottom: 0.75rem;
+}
+
+.chat-message:last-child {
+    margin-bottom: 0;
+}
+
+.chat-meta {
+    font-size: 0.75rem;
+    margin-bottom: 0.15rem;
+}
+
+.chat-author {
+    color: #9ca3af;
+}
+
+/* user vs assistant bubbles */
+
+.chat-bubble {
+    display: inline-block;
+    padding: 0.5rem 0.7rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+.chat-message.from-user .chat-bubble {
+    background: #0f766e;
+    color: #ecfeff;
+    border-top-right-radius: 4px;
+}
+
+.chat-message.from-assistant .chat-bubble {
+    background: #111827;
+    color: #e5e7eb;
+    border-top-left-radius: 4px;
+}
+
+.chat-placeholder {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+/* ---- Warning banner ---- */
+
+.warning-banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.55rem;
+    margin-bottom: 0.85rem;
+    padding: 0.6rem 0.8rem;
+    border-radius: 10px;
+    border: 1px solid #f97316;
+    background: rgba(248, 168, 76, 0.08);
+    color: #fed7aa;
+    font-size: 0.85rem;
+}
+
+.warning-icon {
+    margin-top: 0.1rem;
+}
+
+/* ---- Chat disclaimer ---- */
+
+.chat-disclaimer {
+    margin-top: 0.9rem;
+    font-size: 0.8rem;
+    color: #9ca3af;
+}
+
+.chat-disclaimer ul {
+    padding-left: 1.2rem;
+    margin: 0.4rem 0 0;
+}
+
+.chat-disclaimer li {
+    margin-bottom: 0.15rem;
+}

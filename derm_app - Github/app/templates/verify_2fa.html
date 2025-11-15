@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="auth-page">
+    <div class="auth-card">
+        <h2 class="auth-title">Two-Factor Verification</h2>
+        <p class="auth-subtitle">
+            Enter the 6-digit demo code to continue. (Use <strong>123456</strong>.)
+        </p>
+
+        <form method="POST" class="auth-form">
+            <div class="form-group">
+                <label for="code">Verification code</label>
+                <input
+                    id="code"
+                    type="text"
+                    name="code"
+                    maxlength="6"
+                    inputmode="numeric"
+                    placeholder="123456"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="btn btn-primary">Verify</button>
+        </form>
+
+        {% if error %}
+        <p class="form-error">{{ error }}</p>
+        {% endif %}
+
+        <p class="auth-footnote">
+            In a real app, this code would be sent via SMS, email, or an authenticator app.
+        </p>
+    </div>
+</div>
+{% endblock %}

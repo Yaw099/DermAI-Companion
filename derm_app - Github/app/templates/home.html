@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="home-layout">
+    <!-- Left: input / instructions -->
+    <section class="home-panel">
+        <h2 class="home-title">Symptom Assistant</h2>
+        <p class="home-subtitle">
+            Describe your skin concern in your own words. This demo provides
+            educational explanations only — it is <strong>not</strong> a diagnosis.
+        </p>
+
+
+            <form method="POST" enctype="multipart/form-data" class="home-form">
+                <div class="form-group">
+                    <label for="question">Describe your concern</label>
+                    <textarea
+                        id="question"
+                        name="question"
+                        rows="4"
+                        placeholder="E.g., “I have a mole that has rapid growth and sometimes bleeds...”"
+                        required
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="image">Attach a photo (optional)</label>
+                    <input
+                        id="image"
+                        type="file"
+                        name="image"
+                        accept="image/*"
+                    >
+                    <p class="field-helper">
+                        Classroom demo only — please don’t upload real photos of yourself or others.
+                    </p>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    Ask Derm AI
+                </button>
+            </form>
+
+        <div class="home-footnote">
+            <p>
+                Do not upload real photos or PHI in this classroom demo.
+            </p>
+        </div>
+    </section>
+
+    <!-- Right: conversation / warnings -->
+    <section class="chat-panel">
+        {% if red_warning %}
+        <div class="warning-banner">
+            <span class="warning-icon">⚠️</span>
+            <div>
+                <strong>Red-flag terms detected:</strong>
+                {{ red_warning|join(', ') }}.
+                This tool cannot diagnose conditions. Consider contacting a
+                healthcare professional.
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="chat-window">
+            {% if conversation %}
+                {% for msg in conversation %}
+                    <div class="chat-message {{ 'from-user' if msg.role == 'user' else 'from-assistant' }}">
+                        <div class="chat-meta">
+                            <span class="chat-author">
+                                {% if msg.role == 'user' %} You{% else %} Assistant{% endif %}
+                            </span>
+                        </div>
+                        <div class="chat-bubble">
+                            {{ msg.content }}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="chat-placeholder">
+                    <p>No messages yet. Your conversation will appear here after you ask your first question.</p>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="chat-disclaimer">
+            <p>
+                <strong>Important:</strong> This prototype is for educational purposes only
+                and does not provide medical advice, diagnosis, or treatment.
+            </p>
+            <ul>
+                <li>Always consult a licensed dermatologist for medical concerns.</li>
+                <li>Content may be incomplete, outdated, or inaccurate.</li>
+                <li>Links to reputable sources (AAD, Mayo Clinic, NIH) can be added here.</li>
+            </ul>
+        </div>
+    </section>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Derm AI Companion</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="app-body">
+
+    <header class="app-header">
+        <div class="app-header-left">
+            <span class="logo-dot"></span>
+            <span class="logo-icon">🩺</span>
+            <span class="app-title">Derm AI Companion</span>
+        </div>
+
+        {% if session.get('authenticated') %}
+        <div class="app-header-right">
+            <span class="user-chip">
+                {{ session.get('user_email', 'User') }}
+            </span>
+            <a href="{{ url_for('auth.logout') }}" class="logout-link">Logout</a>
+        </div>
+        {% endif %}
+    </header>
+
+    <main class="app-main">
+        {% block content %}{% endblock %}
+    </main>
+
+</body>
+</html>
