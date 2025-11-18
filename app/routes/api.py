@@ -133,8 +133,7 @@ def create_journal_entry():
         return jsonify({
             "success": True,
             "message": "Journal entry created",
-            "entry_id": "temp_123",  # TODO: Return actual ID
-            "data": data.model_dump()
+            "entry_id": "temp_123", 
         }), 201
     
     except ValidationError as e:
