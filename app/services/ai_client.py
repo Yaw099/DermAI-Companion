@@ -18,6 +18,8 @@ def ask_ai(conversation):
             messages=messages,
             max_tokens=1000
         )
+
+        
         
         return response.choices[0].message.content
     
